@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanojo Okarishimasu!</title>
+    <link rel="stylesheet" href="/styles/index.css">
+    <script src="https://code.createjs.com/1.0.0/preloadjs.min.js"></script>
+    <script src="/javascript/index.js"></script>
+</head>
+<body>
+    <loadingscreen id="loadingscreen">
+        <progressindicator id="progress">
+
+        </progressindicator>
+    </loadingscreen>
+
+    <main>
+        <header>
+            <logo><img src="" alt=""></logo>
+            <ul id="kanokari-menu">
+                <li>Girlfriends</li>
+                <li>About</li>
+                <li>Contact</li>
+            </ul>
+            <shoppingcart><img src="" alt=""></shoppingcart>
+        </header>
+        <kanojopicture>
+        </kanojopicture>
+        <kanojoinformation>
+            <description>
+                <p>High class girlfriend</p>
+            </description>
+            <name>
+                <p>Chizuru</p>
+                <p>Mizuhara</p>
+            </name>
+            <button>
+                ￥5,000/hr
+            </button>
+            <button>
+                Reviews
+            </button>
+            <recommendations>
+                <profile>
+                    <img src="" alt="">
+                    <p>Chizuru Mizuhara</p>
+                </profile>
+                <profile>
+                    <img src="" alt="">
+                    <p>Ruka Sarashina</p>
+                </profile>
+                <profile>
+                    <img src="" alt="">
+                    <p>Sumi Sakurasawa</p>
+                </profile>
+            </recommendations>
+        </kanojoinformation>
+    </main>
+
+    <script>
+        newKanojo(first_name='Chizuru', second_name='Mizuhara', description='High class girlfriend', price='5,000', recommendations_name=['Chizuru Mizuhara', 'Sumi Sakurasawa', 'Ruka Sarashima'])
+    </script>
+
+    <script>
+        var queue = new createjs.LoadQueue(false);
+
+        queue.on('progress', function(event){
+            console.log('Loading: ' + Math.floor(event.progress * 100) + '%')
+            console.log(event)
+        })
+        queue.on("complete", handleComplete, this);
+        queue.loadFile({id:"chizuru", src:"/assets/images/kanojos/chizuru_mizuhara/main.png"});
+        queue.loadFile({id:"sumi", src:"/assets/images/kanojos/sumi_sakurasawa/main.png"});
+        queue.loadFile({id:"ruka", src:"/assets/images/kanojos/ruka_sarashina/main.png"});
+        function handleComplete() {
+            var chizuruImage = queue.getResult("chizuru");
+            chizuruImage.id = 'kanojopicture-main';
+            chizuruImage.alt = 'Mizuhara Chizuru';
+            document.getElementsByTagName('kanojopicture')[0].appendChild(chizuruImage);
+        }
+    </script>
+</body>
+</html>

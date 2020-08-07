@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanojo Okarishimasu!</title>
+    <link rel="stylesheet" href="/styles/index.css">
+    <script src="https://code.createjs.com/1.0.0/preloadjs.min.js"></script>
+    <script src="/javascript/index.js"></script>
+</head>
+<body>
+    <loadingscreen id="loadingscreen">
+        <progressindicator id="progress">
+
+        </progressindicator>
+    </loadingscreen>
+
+    <main>
+        <header>
+            <logo id="logo"></logo>
+            <ul id="kanokari-menu">
+                <li><a href="/">Girlfriends</a></li>
+                <li><a href="/">About</a></li>
+                <li><a href="/">Contact</a></li>
+            </ul>
+            <shoppingcart><img src="" alt=""></shoppingcart>
+        </header>
+    </main>
+
+    <script>
+        newKanojo(first_name='Chizuru', second_name='Mizuhara', description='High class girlfriend', price='5,000', recommendations_name=['Chizuru Mizuhara', 'Sumi Sakurasawa', 'Ruka Sarashima'])
+    </script>
+
+    <script>
+        var queue = new createjs.LoadQueue(false);
+
+        queue.on('progress', function(event){
+            console.log('Loading: ' + Math.floor(event.progress * 100) + '%')
+            console.log(event)
+        })
+        queue.on("complete", handleComplete, this);
+        queue.loadFile({id:"logo", src:"/assets/images/logos/kanojookarishimasu.png"});
+        queue.loadFile({id:"chizuru", src:"/assets/images/kanojos/chizuru_mizuhara/main.png"});
+        queue.loadFile({id:"sumi", src:"/assets/images/kanojos/sumi_sakurasawa/main.png"});
+        queue.loadFile({id:"ruka", src:"/assets/images/kanojos/ruka_sarashina/main.png"});
+        
+        function handleComplete() {
+            try {
+                var logoImage = queue.getResult('logo');
+                logoImage.id = 'logoImage'
+                logoImage.alt = 'Kanojo Okarishimasu'
+                document.getElementById('logo').appendChild(logoImage)
+            } catch(err) {
+                console.log('Error while adding Logo Image')
+                console.log('Error details: ' + err)
+            }
+            
+            try {
+                var kanojoImage = queue.getResult("chizuru");
+                kanojoImage.id = 'kanojopicture-main-chizuru';
+                kanojoImage.alt = 'Mizuhara Chizuru';
+                document.getElementById('ChizuruMainPicture').appendChild(kanojoImage);
+            } catch(err) {
+                console.log('Error while adding Chizuru Mizuhara Main Picture')
+                console.log('Error details: ' + err)
+            }
+            try {
+                var kanojoImage = queue.getResult("sumi");
+                kanojoImage.id = 'kanojopicture-main-sumi';
+                kanojoImage.alt = 'Sumi Sakurasawa';
+                document.getElementById('SumiMainPicture').appendChild(kanojoImage);
+            } catch(err) {
+                console.log('Error while adding Sumi Sakurasawa Main Picture')
+                console.log('Error details: ' + err)
+            }
+            
+            try {
+                var kanojoImage = queue.getResult("ruka");
+                kanojoImage.id = 'kanojopicture-main-ruka';
+                kanojoImage.alt = 'Ruka Sarashina';
+                document.getElementById('RukaMainPicture').appendChild(kanojoImage);
+            } catch(err) {
+                console.log('Error while adding Ruka Sarashina Main Picture')
+                console.log('Error details: ' + err)
+            }
+        }
+        
+    </script>
+</body>
+</html>

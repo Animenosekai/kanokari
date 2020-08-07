@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: SF Compact Display;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+button {
+    border-color: black;
+    border-width: 2px;
+    border-radius: 25px;
+    background-color: transparent;
+    width: 190px;
+    height: 50px;
+    font-size: large;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    transform: translateY(50px);
+}
+
+logo {
+    width: 200px;
+    /* width: 15%; */
+    margin-left: 15vw;
+    min-width: 200px;
+    /* margin-top: 2%; */
+}
+
+#logoImage {
+    height: 100%;
+    width: 100%;
+}
+
+#kanokari-menu {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 150px;
+    list-style: none;
+    font-size: 20px;
+    margin-left: 20vw;
+    margin-top: 40px;
+}
+
+kanojopicture {
+    position: fixed;
+    right: 50px;
+}
+
+kanojoinformation {
+    margin-top: 180px;
+    left: 15vw;
+    position: absolute;
+}
+
+description {
+    font-size: 25px;
+}
+
+name {
+    font-size: 100px;
+    letter-spacing: 8px;
+}
+
+#firstName {
+    transform: translateY(20px);
+}
+
+#secondName {
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+recommendations {
+    display: flex;
+    flex-direction: column;
+}
+
+profiles {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-top: 15px;
+}
+
+kanojolinks {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+#recommendationTitle {
+    font-size: 22px;
+}
+
+profile {
+    display: flex;
+}
+
+#profileName {
+    display: table-caption;
+}
+
+profiles img{
+    vertical-align: middle;
+    border: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+profilenamewrapper {
+    display: table;
+}
