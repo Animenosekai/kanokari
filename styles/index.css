@@ -2,21 +2,108 @@
     margin: 0;
     padding: 0;
     font-family: SF Compact Display;
+    color: white;
+}
+
+body {
+    overflow: hidden;
+    transition: all 1s ease;
+}
+
+background {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition: all 1s ease;
+}
+
+.backgrounddisappear {
+    opacity: 0;
+    z-index: -2;
+}
+
+.chizurucolors {
+    background: rgb(255,213,91);
+    background: -moz-linear-gradient(73deg, rgba(255,213,91,1) 0%, rgba(245,125,229,1) 20%, rgba(236,134,212,1) 37%, rgba(255,223,161,1) 100%);
+    background: -webkit-linear-gradient(73deg, rgba(255,213,91,1) 0%, rgba(245,125,229,1) 20%, rgba(236,134,212,1) 37%, rgba(255,223,161,1) 100%);
+    background: linear-gradient(73deg, rgba(255,213,91,1) 0%, rgba(245,125,229,1) 20%, rgba(236,134,212,1) 37%, rgba(255,223,161,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffd55b",endColorstr="#ffdfa1",GradientType=1);
+}
+
+.rukacolors {
+    background: rgb(35,131,206);
+    background: -moz-linear-gradient(90deg, rgba(35,131,206,1) 0%, rgba(28,207,210,1) 35%, rgba(29,216,229,1) 63%, rgba(37,184,158,1) 85%, rgba(28,206,153,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(35,131,206,1) 0%, rgba(28,207,210,1) 35%, rgba(29,216,229,1) 63%, rgba(37,184,158,1) 85%, rgba(28,206,153,1) 100%);
+    background: linear-gradient(90deg, rgba(35,131,206,1) 0%, rgba(28,207,210,1) 35%, rgba(29,216,229,1) 63%, rgba(37,184,158,1) 85%, rgba(28,206,153,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2383ce",endColorstr="#1cce99",GradientType=1);
+}
+
+.sumicolors {
+    background: rgb(245,15,85);
+    background: -moz-linear-gradient(73deg, rgba(245,15,85,1) 0%, rgba(248,0,66,1) 20%, rgba(240,140,130,1) 59%, rgba(211,219,163,1) 100%);
+    background: -webkit-linear-gradient(73deg, rgba(245,15,85,1) 0%, rgba(248,0,66,1) 20%, rgba(240,140,130,1) 59%, rgba(211,219,163,1) 100%);
+    background: linear-gradient(73deg, rgba(245,15,85,1) 0%, rgba(248,0,66,1) 20%, rgba(240,140,130,1) 59%, rgba(211,219,163,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f50f55",endColorstr="#d3dba3",GradientType=1);
 }
 
 a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 button {
-    border-color: black;
-    border-width: 2px;
     border-radius: 25px;
     background-color: transparent;
     width: 190px;
     height: 50px;
     font-size: large;
+    cursor: pointer;
+    transition: all .2s ease;
+    border: 2px solid white;
+}
+
+button:hover {
+    border-color: black;
+    color: white;
+    background-color: black;
+}
+
+loadingscreen {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    color: white;
+    z-index: 500;
+    background-color: black;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+loadingscreen.fadeOut {
+    opacity: 0;
+}
+
+progressindicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+progresspercentage {
+    font-size: 3rem;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hidden {
+    display: none;
 }
 
 header {
@@ -24,14 +111,17 @@ header {
     flex-direction: row;
     width: 100vw;
     transform: translateY(50px);
+    position: absolute;
+    z-index: 100;
 }
 
 logo {
-    width: 200px;
+    width: 300px;
     /* width: 15%; */
     margin-left: 15vw;
     min-width: 200px;
     /* margin-top: 2%; */
+    cursor: pointer;
 }
 
 #logoImage {
@@ -46,27 +136,59 @@ logo {
     gap: 150px;
     list-style: none;
     font-size: 20px;
-    margin-left: 20vw;
+    margin-left: 15vw;
     margin-top: 40px;
 }
 
+#kanokari-menu li {
+    opacity: .8;
+    transition: opacity .2s ease;
+}
+
+#kanokari-menu li:hover {
+    opacity: 1;
+}
+
+kanojo {
+    position: absolute;
+    opacity: 1;
+    transform: translateX(0vw);
+    transition: transform .5s cubic-bezier(0.68, 0, 0.25, 1);
+    top: 110px;
+    left: 40px;
+}
+
+.kanojodisappear {
+    transform: translateX(-110vw);
+}
+
+.kanojohidden {
+    transform: translateX(100vw);
+    opacity: 0;
+}
+
 kanojopicture {
-    position: fixed;
+    /* position: fixed; */
+    position: relative;
     right: 50px;
+    top: -60px;
+    pointer-events: none;
+    margin-left: 60vw;
 }
 
 kanojoinformation {
     margin-top: 180px;
     left: 15vw;
     position: absolute;
+    transform: scale(1.1);
 }
 
 description {
-    font-size: 25px;
+    font-size: 1.6rem;
 }
 
 name {
-    font-size: 100px;
+    font-size: 6.25rem;
     letter-spacing: 8px;
 }
 
@@ -79,17 +201,14 @@ name {
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-recommendations {
-    display: flex;
-    flex-direction: column;
-}
-
-profiles {
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-    margin-top: 15px;
-}
+@supports (-webkit-text-stroke: 1px black) {
+    #secondName {
+      -webkit-text-stroke: 1px white;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      text-shadow: none;
+    }
+  }
 
 kanojolinks {
     display: flex;
@@ -99,28 +218,88 @@ kanojolinks {
     margin-bottom: 40px;
 }
 
+
 #recommendationTitle {
-    font-size: 22px;
+    font-size: 1.375rem;
+}
+
+recommendations {
+    display: flex;
+    flex-direction: column;
+}
+
+profiles {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    margin-top: 25px;
 }
 
 profile {
     display: flex;
+    cursor: pointer;
 }
 
-#profileName {
-    display: table-caption;
-}
-
-profiles img{
+kanojoprofilepicture {
     vertical-align: middle;
-    border: 0;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     margin-right: 15px;
-    object-fit: cover;
+    overflow: hidden;
+    border: 2px;
+    border-style: solid;
+    border-color: white;
+}
+
+kanojoprofilepicture img {
+    height: inherit;
+    transform: scale(2.5) translate(3px, 18px);
 }
 
 profilenamewrapper {
     display: table;
+    vertical-align: middle;
+}
+
+#profileName {
+    display: table-caption;
+    font-size: 1.1rem;
+    margin-top: 7px;
+    opacity: 1;
+    transition: opacity .3s ease;
+}
+
+#profileName:hover{
+    opacity: 0.9;
+}
+
+
+progressiondots {
+    bottom: 40px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity .5s ease;
+}
+
+.dot:hover{
+    opacity: 0.8;
+}
+
+.focuseddot {
+    opacity: 1;
 }

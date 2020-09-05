@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico">
     <title>Kanojo Okarishimasu!</title>
     <link rel="stylesheet" href="/styles/index.css">
     <script src="https://code.createjs.com/1.0.0/preloadjs.min.js"></script>
@@ -11,13 +12,13 @@
 <body>
     <loadingscreen id="loadingscreen">
         <progressindicator id="progress">
-
+            <progresspercentage>0%</progresspercentage>
         </progressindicator>
     </loadingscreen>
 
     <main>
         <header>
-            <logo id="logo"></logo>
+            <logo id="logo" onclick="goHome()"></logo>
             <ul id="kanokari-menu">
                 <li><a href="/">Girlfriends</a></li>
                 <li><a href="/">About</a></li>
@@ -27,24 +28,48 @@
         </header>
     </main>
 
+    <progressiondots>
+        <!--
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        -->
+    </progressiondots>
+
+    <background class="chizurucolors"></background>
+    <background class="rukacolors backgrounddisappear"></background>
+    <background class="sumicolors backgrounddisappear"></background>
+
     <script>
-        newKanojo(first_name='Chizuru', second_name='Mizuhara', description='High class girlfriend', price='5,000', recommendations_name=['Chizuru Mizuhara', 'Sumi Sakurasawa', 'Ruka Sarashima'])
+        newKanojo(first_name='Chizuru', second_name='Mizuhara', description='High class girlfriend', price='5,000', recommendations_name=['Chizuru Mizuhara', 'Sumi Sakurasawa', 'Ruka Sarashina'])
+        newKanojo(first_name='Sumi', second_name='Sakurasawa', description='Newest girlfriend', price='3,800', recommendations_name=['Chizuru Mizuhara', 'Sumi Sakurasawa', 'Ruka Sarashina'], 'margin-left: 54vw;')
+        newKanojo(first_name='Ruka', second_name='Sarashina', description='Featured girlfriend', price='4,000', recommendations_name=['Chizuru Mizuhara', 'Sumi Sakurasawa', 'Ruka Sarashina'], 'right: 10px; top: -30px;')
+        autoSlide(10000)
     </script>
 
     <script>
         var queue = new createjs.LoadQueue(false);
 
         queue.on('progress', function(event){
-            console.log('Loading: ' + Math.floor(event.progress * 100) + '%')
+            document.getElementsByTagName('progresspercentage')[0].innerText = 'Loading: ' + Math.floor(event.progress * 100).toString() + '%'
             console.log(event)
         })
         queue.on("complete", handleComplete, this);
-        queue.loadFile({id:"logo", src:"/assets/images/logos/kanojookarishimasu.png"});
-        queue.loadFile({id:"chizuru", src:"/assets/images/kanojos/chizuru_mizuhara/main.png"});
+        queue.loadFile({id:"font", src:"/assets/fonts/SF-Compact-Display-Regular.otf"});
+        queue.loadFile({id:"logo", src:"/assets/images/logos/diamond_logo_colored_resized.png"});
+        queue.loadFile({id:"chizuru", src:"/assets/images/kanojos/chizuru_mizuhara/main_fixed.png"});
         queue.loadFile({id:"sumi", src:"/assets/images/kanojos/sumi_sakurasawa/main.png"});
         queue.loadFile({id:"ruka", src:"/assets/images/kanojos/ruka_sarashina/main.png"});
         
         function handleComplete() {
+            try {
+                var fontElement = document.createElement('style')
+                fontElement.innerHTML = "@font-face {font-family: SF Compact Display; src: url('/assets/fonts/SF-Compact-Display-Regular.otf');}"
+                document.getElementsByTagName('head')[0].appendChild(fontElement)
+            } catch(err) {
+                console.log('Error while adding SF Compact Display Font')
+                console.log(err)
+            }
             try {
                 var logoImage = queue.getResult('logo');
                 logoImage.id = 'logoImage'
@@ -54,7 +79,6 @@
                 console.log('Error while adding Logo Image')
                 console.log('Error details: ' + err)
             }
-            
             try {
                 var kanojoImage = queue.getResult("chizuru");
                 kanojoImage.id = 'kanojopicture-main-chizuru';
@@ -68,12 +92,12 @@
                 var kanojoImage = queue.getResult("sumi");
                 kanojoImage.id = 'kanojopicture-main-sumi';
                 kanojoImage.alt = 'Sumi Sakurasawa';
+                kanojoImage.setAttribute('style', 'transform: scale(0.8) translateY(-200px);')
                 document.getElementById('SumiMainPicture').appendChild(kanojoImage);
             } catch(err) {
                 console.log('Error while adding Sumi Sakurasawa Main Picture')
                 console.log('Error details: ' + err)
             }
-            
             try {
                 var kanojoImage = queue.getResult("ruka");
                 kanojoImage.id = 'kanojopicture-main-ruka';
@@ -83,6 +107,62 @@
                 console.log('Error while adding Ruka Sarashina Main Picture')
                 console.log('Error details: ' + err)
             }
+
+            try {
+                pictures = document.getElementsByTagName('kanojoprofilepicture');
+                for (number in pictures){
+                    if (pictures[number].id == 'ChizuruMizuharaProfilePicture'){
+                        var kanojoImage = document.createElement('img');
+                        kanojoImage.src = document.getElementById('kanojopicture-main-chizuru').src
+                        kanojoImage.id = 'kanojopicture-profile-chizuru';
+                        kanojoImage.alt = 'Mizuhara Chizuru';
+                        pictures[number].appendChild(kanojoImage)
+                    }
+                }
+            } catch(err) {
+                console.log('Error while adding Chizuru Mizuhara Profile Picture')
+                console.log('Error details: ' + err)
+            }
+            try {
+                pictures = document.getElementsByTagName('kanojoprofilepicture');
+                for (number in pictures){
+                    if (pictures[number].id == 'SumiSakurasawaProfilePicture'){
+                        var kanojoImage = document.createElement('img');
+                        kanojoImage.src = document.getElementById('kanojopicture-main-sumi').src
+                        kanojoImage.id = 'kanojopicture-profile-sumi';
+                        kanojoImage.alt = 'Sumi Sakurasawa';
+                        pictures[number].appendChild(kanojoImage)
+                    }
+                }
+            } catch(err) {
+                console.log('Error while adding Sumi Sakurasawa Profile Picture')
+                console.log('Error details: ' + err)
+            }
+            try {
+                pictures = document.getElementsByTagName('kanojoprofilepicture');
+                for (number in pictures){
+                    if (pictures[number].id == 'RukaSarashinaProfilePicture'){
+                        var kanojoImage = document.createElement('img');
+                        kanojoImage.src = document.getElementById('kanojopicture-main-ruka').src
+                        kanojoImage.id = 'kanojopicture-profile-ruka';
+                        kanojoImage.alt = 'Ruka Sarashina';
+                        kanojoImage.setAttribute('style', 'transform: scale(2.5) translate(9px, 18px);')
+                        pictures[number].appendChild(kanojoImage)
+                    }
+                }
+            } catch(err) {
+                console.log('Error while adding Ruka Sarashina Profile Picture')
+                console.log('Error details: ' + err)
+            }
+
+            setTimeout(function(){
+                document.getElementsByTagName('loadingscreen')[0].classList.add('fadeOut')
+                setTimeout(function(){
+                    document.getElementsByTagName('loadingscreen')[0].classList.add('hidden')
+                    document.getElementsByTagName('loadingscreen')[0].classList.remove('fadeOut')
+                },1000)
+            },500)
+            
         }
         
     </script>
