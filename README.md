@@ -58,6 +58,8 @@ For major changes, please open a discussion first to discuss what you would like
 ## Authors
 
 - **Animenosekai** - *Initial work* - [Animenosekai](https://github.com/Animenosekai)
+- **Kitsune** - *Design* - [*@designs.by.kitsune*](https://www.instagram.com/designs.by.kitsune/)
+- **Reiji Miyajima** - *Characters* - [*@Miyajimareiji*](https://twitter.com/miyajimareiji)
 
 ## Licensing
 
