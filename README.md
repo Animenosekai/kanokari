@@ -8,11 +8,11 @@
 <br>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1134d140-26f1-4bff-9f19-e94d5a17864c/deploy-status)](https://app.netlify.com/sites/kanojo-okarishimasu/deploys)
-[![GitHub - License](https://img.shields.io/github/license/Animenosekai/takt)](https://github.com/Animenosekai/takt/blob/master/LICENSE)
-[![GitHub top language](https://img.shields.io/github/languages/top/Animenosekai/takt)](https://github.com/Animenosekai/takt)
-![Code Size](https://img.shields.io/github/languages/code-size/Animenosekai/takt)
-![Repo Size](https://img.shields.io/github/repo-size/Animenosekai/takt)
-![Issues](https://img.shields.io/github/issues/Animenosekai/takt)
+[![GitHub - License](https://img.shields.io/github/license/Animenosekai/kanokari)](https://github.com/Animenosekai/kanokari/blob/master/LICENSE)
+[![GitHub top language](https://img.shields.io/github/languages/top/Animenosekai/kanokari)](https://github.com/Animenosekai/kanokari)
+![Code Size](https://img.shields.io/github/languages/code-size/Animenosekai/kanokari)
+![Repo Size](https://img.shields.io/github/repo-size/Animenosekai/kanokari)
+![Issues](https://img.shields.io/github/issues/Animenosekai/kanokari)
 
 ## Index
 
