@@ -1,12 +1,13 @@
 # kanokari
 
-<img align="right" src="./assets/icon_cosette.png" height="220px">
+<img align="right" src="./assets/images/kanojos/sumi_sakurasawa/main.png" height="220px">
 
 ***Kanojo Okarishimasu website project!***
 
 <br>
 <br>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1134d140-26f1-4bff-9f19-e94d5a17864c/deploy-status)](https://app.netlify.com/sites/kanojo-okarishimasu/deploys)
 [![GitHub - License](https://img.shields.io/github/license/Animenosekai/takt)](https://github.com/Animenosekai/takt/blob/master/LICENSE)
 [![GitHub top language](https://img.shields.io/github/languages/top/Animenosekai/takt)](https://github.com/Animenosekai/takt)
 ![Code Size](https://img.shields.io/github/languages/code-size/Animenosekai/takt)
@@ -21,6 +22,8 @@
 - [Contributing](#contributing)
 - [Authors](#authors)
 - [Licensing](#licensing)
+
+![Main Page](assets/screenshots/main.png)
 
 ## Purpose
 
@@ -40,11 +43,17 @@ Here are archives of two steps in the development of this landing page (meant to
 
 ## Deployment
 
+There is a live version available at:
+
+<https://kanojo-okarishimasu.netlify.app/>
+
 Feel free to report any issue you might encounter on this GitHub page.
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open a discussion first to discuss what you would like to change.
+Although this project has been abandoned for now, pull requests are welcome.
+
+For major changes, please open a discussion first to discuss what you would like to change.
 
 ## Authors
 
